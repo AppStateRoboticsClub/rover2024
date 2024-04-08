@@ -1,0 +1,7 @@
+# Motor controll
+rpi.gpio
+
+# Web interface and sockets
+flask
+flask-socketio
+eventlet
