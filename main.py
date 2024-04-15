@@ -1,6 +1,7 @@
 import json
 from flask import Flask, render_template
 from flask_socketio import SocketIO
+import roversim as move
 
 controls: dict[str, float] = {
     'w': 0
@@ -20,6 +21,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345'
 
 socketio = SocketIO(app)
+
+move.init(socketio)
 
 @app.route('/')
 def index():
@@ -46,7 +49,7 @@ def handle_key(data, m = 1):
     if data == 'd':
         motion['turn'] = 1 * m
     print(motion)
-    update_motion()
+    move.set_motion(movement=motion)
 
 @socketio.on('key-up')
 def handle_key_up(data):
