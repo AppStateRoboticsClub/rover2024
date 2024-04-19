@@ -14,6 +14,7 @@ def init(s: SocketIO):
 
 
 def set_motion(movement: dict[str, float]):
+    print("MOVE")
     global socketio
     socketio.emit('set-speed', movement)
 
