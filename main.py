@@ -64,4 +64,4 @@ def update_motion():
     socketio.emit('set-speed', {"speed": motion['speed'], "turn": motion['turn']})
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True) # type: ignore
+    socketio.run(app, debug=True, host="0.0.0.0") # type: ignore
