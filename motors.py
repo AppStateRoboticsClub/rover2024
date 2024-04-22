@@ -41,9 +41,9 @@ def turn(value):
 def acc(value):
     global isReversed
     if value < 0:
-        isReversed = True
+        setReverse(True)
     else:
-        isReversed = False
+        setReverse(False)
     # check for is reversed
     
     # reduce reverse speed
