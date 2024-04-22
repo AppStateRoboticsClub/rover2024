@@ -42,10 +42,13 @@ def acc(value):
     global isReversed
     if value < 0:
         isReversed = True
+    else:
+        isReversed = False
     # check for is reversed
     
     # reduce reverse speed
     if isReversed:
+        value = value * -1
         value = value / 5
 
     # update pwm duty cycle to new value
