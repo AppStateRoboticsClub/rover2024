@@ -1,5 +1,5 @@
 import json
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from flask_socketio import SocketIO
 import roversim as move
 
@@ -27,6 +27,10 @@ move.init(socketio)
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/assets/<path:filename>')
+def send_image(filename):
+    return send_from_directory('assets', filename)
 
 @socketio.on('connect')
 def handle_connect():

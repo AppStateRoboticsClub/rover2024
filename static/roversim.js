@@ -10,6 +10,9 @@ let rotation = 0;
 let speed = 0;
 let turn = 0;
 
+let backgroundImage = new Image();
+backgroundImage.src = "/assets/IMG_0016.jpg";
+
 socket.on('set-speed', function (data) {
 	speed = data["speed"];
 	turn = data["turn"];
@@ -22,7 +25,7 @@ function clear() {
 	// ctx.closePath();
 }
 
-function draw_rover() {
+function drawRover() {
 	ctx.save();
 	ctx.translate(posx, posy);
 	ctx.rotate(rotation * Math.PI / 180);
@@ -43,9 +46,13 @@ function draw_rover() {
 	ctx.restore();
 }
 
+function drawBackground() {
+	ctx.drawImage(backgroundImage, 0, 0, width, height); // Draw image at (0,0) with canvas dimensions
+  }
+
 function redraw() {
-	clear();
-	draw_rover();
+	drawBackground()
+	drawRover();
 }
 
 function roversim() {
